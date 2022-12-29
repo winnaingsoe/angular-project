@@ -1,0 +1,72 @@
+<div class="container mt-4">
+  <h4>Reactive Form Angular</h4>
+  <div class="row">
+    <div class="col-5">
+      <div class="card">
+        <div class="card-header">
+          <h5>Item Form</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form">
+            <label for="Name" class="form-label">Item Name</label>
+            <div class="input-group mg-2">
+              <span class="input-group-text"><i class="bi bi-box"></i></span>
+              <input type="text" formControlName="name" id="name" class="form-control" placeholder="Enter Name">
+            </div>
+            <label for="price" class="form-label">Price</label>
+            <div class="input-group mb-2">
+              <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
+              <input type="number" formControlName="price" id="price" class="form-control" placeholder="Enter Price">
+            </div>
+            <label for="description" class="form-label">Description</label>
+            <div class="input-group mb-2">
+              <span class="input-group-text"><i class="bi bi-chat-left-dots"></i></span>
+              <textarea id="description" formControlName="descripption" rows="3" class="form-control"></textarea>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" formControlName="stock" id="stock" class="form-check-input">
+              <label for="stock" class="form-label-check">Stock</label>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-outline-success w-25">
+                <i class="bi bi-save"></i>
+                Create
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Item List</h5>
+          <div class="card-body">
+            <div class="alert alert-info" *ngIf="list.length">
+              <i class="bi bi-exclamation-triangle"></i>
+              No Data.Please Enter
+            </div>
+            <table class="table table-striped bg-success">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Description</th>
+                  <th>Stock</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of list">
+                  <td>{{item.name}}</td>
+                  <td>{{item.price}}</td>
+                  <td>{{item.description}}</td>
+                  <td>{{item.stock ? 'In Stock' : 'Outof Stock'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

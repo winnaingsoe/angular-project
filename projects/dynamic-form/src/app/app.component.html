@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-5">
+      <div class="card">
+        <div class="card-header">
+          <h5>Dynamic Form</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form">
+            <label for="name" class="form-label">Name</label>
+            <div class="input-group mb-2">
+              <span class="input-group-text"><i class="bi bi-person"></i></span>
+              <input type="text" formControlName="name" class="form-control">
+            </div>
+            <label for="email" class="form-label">Email</label>
+            <div class="input-group mb-2">
+              <span class="input-group-text"><i class="bi bi-envelope-at"></i></span>
+              <input type="email" formControlName="email" id="email" class="form-control">
+            </div>
+            <label class="form-label">Phones</label>
+            <div formArrayName="phones">
+              <div class="row mb-2" *ngFor="let item of phones.controls; let i = index">
+                <div class="col">
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                    <input type="tel" [formControlName]="i" class="form-control" placeholder="Phone Number">
+                  </div>
+                </div>
+                <div class="col-3 d-flex">
+                  <button class="btn btn-outline-primary me-2" (click)="addPhone()"><i class="bi bi-plus"></i></button>
+                  <button class="btn btn-outline-danger" (click)="removePhone(i)"><i class="bi bi-x"></i></button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5>Form Result</h5>
+        </div>
+        <div class="card-body">
+          <pre>{{form.value | json}}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
